@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Уроки - Alfarid Admin{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 30px;">Уроки</h2>
+
+{% if lessons %}
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Преподаватель</th>
+            <th>Класс</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Студентов</th>
+            <th>Длительность</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lesson in lessons %}
+        <tr>
+            <td><strong>{{ lesson.title }}</strong></td>
+            <td>{{ lesson.teacher.full_name }}</td>
+            <td>{{ lesson.class_.name }}</td>
+            <td>{{ lesson.start_time.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>
+                {% if lesson.status.value == 'active' %}
+                <span style="color: #10b981;">● Идёт</span>
+                {% elif lesson.status.value == 'completed' %}
+                <span style="color: #3b82f6;">● Завершён</span>
+                {% elif lesson.status.value == 'scheduled' %}
+                <span style="color: #f59e0b;">● Запланирован</span>
+                {% else %}
+                <span style="color: #ef4444;">● Отменён</span>
+                {% endif %}
+            </td>
+            <td>{{ lesson.student_count }}</td>
+            <td>
+                {% if lesson.duration_seconds %}
+                {{ (lesson.duration_seconds // 60) }} мин
+                {% else %}
+                -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div style="text-align: center; padding: 60px; background: white; border-radius: 10px;">
+    <p style="font-size: 18px; color: #888;">Уроков пока нет</p>
+</div>
+{% endif %}
+{% endblock %}
+
+
+

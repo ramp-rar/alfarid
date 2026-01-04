@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Alfarid Admin{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 30px; color: #333;">Статистика системы</h2>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="number">{{ teachers_count }}</div>
+        <div class="label">Преподавателей</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="number">{{ students_count }}</div>
+        <div class="label">Студентов</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="number">{{ lessons_count }}</div>
+        <div class="label">Уроков</div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="number">{{ classes_count }}</div>
+        <div class="label">Классов</div>
+    </div>
+</div>
+
+<h3 style="margin-top: 40px; margin-bottom: 20px;">Быстрые действия</h3>
+
+<div style="display: flex; gap: 15px;">
+    <a href="/admin/teachers" class="btn">+ Добавить преподавателя</a>
+    <a href="/admin/students" class="btn">+ Добавить студента</a>
+    <a href="/docs" class="btn" style="background: #10b981;">📚 API Документация</a>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,43 @@
+# Lingua Classroom - Зависимости
+# Python 3.9+ (для Python 3.14 используйте последние версии)
+
+# GUI Framework
+PyQt5>=5.15.9
+PyQt5-Qt5>=5.15.2
+PyQt5-sip>=12.12.1
+
+# Сеть
+netifaces>=0.11.0; platform_system != "Windows" or python_version < "3.13"
+zeroconf>=0.80.0
+
+# Видео и изображения
+opencv-python>=4.8.0
+numpy>=1.26.0  # Обновлено для Python 3.14
+Pillow>=10.0.0
+mss>=9.0.1  # Захват экрана
+
+# Аудио (опционально - могут быть проблемы с Python 3.14)
+# PyAudio==0.2.13  # Закомментировано - нет сборок для 3.14
+pydub>=0.25.1
+sounddevice>=0.4.6
+soundfile>=0.12.1
+
+# Утилиты
+python-dateutil>=2.8.2
+cryptography>=41.0.0
+pytz>=2023.3
+
+# Логирование
+colorlog>=6.7.0
+
+# Конфигурация
+# configparser  # Встроен в Python 3+
+PyYAML>=6.0.1
+
+# Для сборки
+pyinstaller>=6.1.0
+
+# Дополнительные
+# python-vlc>=3.0.18121  # Опционально
+requests>=2.31.0
+

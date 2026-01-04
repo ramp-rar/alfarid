@@ -1,0 +1,11 @@
+# Requirements для сборки EXE
+# Установите перед сборкой: pip install -r requirements-build.txt
+
+# Основные зависимости (из requirements.txt)
+-r requirements.txt
+
+# Сборка
+pyinstaller==6.3.0
+
+
+

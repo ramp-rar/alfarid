@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Студенты - Alfarid Admin{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h2>Студенты</h2>
+    <a href="/api/v1/students" class="btn">+ Добавить</a>
+</div>
+
+{% if students %}
+<table>
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>ID Студента</th>
+            <th>Email</th>
+            <th>Класс</th>
+            <th>Статус</th>
+            <th>Создан</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td><strong>{{ student.full_name }}</strong></td>
+            <td><code>{{ student.student_id }}</code></td>
+            <td>{{ student.email or '-' }}</td>
+            <td>{{ student.class_.name if student.class_ else '-' }}</td>
+            <td>
+                {% if student.is_active %}
+                <span style="color: #10b981;">● Активен</span>
+                {% else %}
+                <span style="color: #ef4444;">● Неактивен</span>
+                {% endif %}
+            </td>
+            <td>{{ student.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div style="text-align: center; padding: 60px; background: white; border-radius: 10px;">
+    <p style="font-size: 18px; color: #888;">Студентов пока нет</p>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
